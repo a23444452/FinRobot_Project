@@ -1,5 +1,7 @@
 # Gemini API 整合指南
 
+> **📦 套件更新**: 本專案使用最新的 `google-genai` (v1.60.0)。舊的 `google-generativeai` 套件已停止維護，請勿使用。
+
 ## 🎯 為什麼選擇 Gemini？
 
 ### 成本比較
@@ -150,16 +152,22 @@ compare_stocks_with_gemini(["AAPL", "MSFT", "GOOGL", "NVDA", "TSLA"])
 在 `example_gemini.py` 中，可以調整模型參數：
 
 ```python
-generation_config = {
+from google import genai
+
+client = genai.Client(api_key=your_api_key)
+
+# 使用 config 參數調整模型行為
+config = {
     "temperature": 0.7,        # 控制創意度 (0.0-1.0)
     "top_p": 0.95,             # 控制多樣性
     "top_k": 40,               # 控制詞彙選擇範圍
     "max_output_tokens": 2048, # 最大輸出長度
 }
 
-model = genai.GenerativeModel(
-    'gemini-2.0-flash-exp',
-    generation_config=generation_config
+response = client.models.generate_content(
+    model='gemini-2.0-flash-exp',
+    contents=prompt,
+    config=config
 )
 ```
 
@@ -167,7 +175,10 @@ model = genai.GenerativeModel(
 
 ```python
 try:
-    response = model.generate_content(prompt)
+    response = client.models.generate_content(
+        model='gemini-2.0-flash-exp',
+        contents=prompt
+    )
     print(response.text)
 except Exception as e:
     if "quota" in str(e).lower():

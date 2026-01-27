@@ -7,7 +7,7 @@ import os
 import yfinance as yf
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
-import google.generativeai as genai
+from google import genai
 
 # 載入環境變數
 load_dotenv()
@@ -19,10 +19,8 @@ if not gemini_key:
     print("   註冊: https://aistudio.google.com/")
     exit(1)
 
-genai.configure(api_key=gemini_key)
-
-# 使用 Gemini 2.0 Flash 模型
-model = genai.GenerativeModel('gemini-2.0-flash-exp')
+# 初始化 Gemini Client（使用新的 google-genai 套件）
+client = genai.Client(api_key=gemini_key)
 
 def get_stock_data(ticker_symbol):
     """取得股票基本資料"""
@@ -101,12 +99,15 @@ def analyze_with_gemini(ticker_symbol):
     print("-" * 60)
     
     try:
-        # 呼叫 Gemini API
-        response = model.generate_content(prompt)
-        
+        # 呼叫 Gemini API（使用新的 google-genai 套件）
+        response = client.models.generate_content(
+            model='gemini-2.0-flash-exp',
+            contents=prompt
+        )
+
         # 顯示 AI 分析結果
         print(response.text)
-        
+
     except Exception as e:
         print(f"❌ Gemini API 錯誤: {e}")
         print("   請檢查 API Key 是否正確設定")
@@ -161,9 +162,12 @@ def compare_stocks_with_gemini(tickers):
     print("-" * 60)
     
     try:
-        response = model.generate_content(prompt)
+        response = client.models.generate_content(
+            model='gemini-2.0-flash-exp',
+            contents=prompt
+        )
         print(response.text)
-        
+
     except Exception as e:
         print(f"❌ Gemini API 錯誤: {e}")
     
