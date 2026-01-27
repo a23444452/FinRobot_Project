@@ -6,17 +6,20 @@
 
 ```
 finrobot-project/
-├── .env.example           # API 金鑰範本
-├── .env                   # 實際 API 金鑰（不提交）
-├── API_SETUP_GUIDE.md     # API 設定詳細指南
-├── EMAIL_SETUP_GUIDE.md   # 📧 郵件通知設定指南（新）
-├── test_api.py            # API 金鑰測試腳本
-├── example_basic.py       # 基本範例（無需付費 API）
-├── example_gemini.py      # Gemini AI 分析範例
-├── email_service.py       # 📧 郵件服務模組（新）
-├── main.py                # 主程式
-├── pyproject.toml         # 專案配置
-└── README.md              # 本檔案
+├── .env.example             # API 金鑰範本
+├── .env                     # 實際 API 金鑰（不提交）
+├── API_SETUP_GUIDE.md       # API 設定詳細指南
+├── EMAIL_SETUP_GUIDE.md     # 📧 郵件通知設定指南
+├── MOBILE_TRIGGER_GUIDE.md  # 📱 手機觸發完整指南
+├── IOS_SHORTCUT_GUIDE.md    # 📱 iOS 捷徑詳細教學
+├── test_api.py              # API 金鑰測試腳本
+├── example_basic.py         # 基本範例（無需付費 API）
+├── example_gemini.py        # Gemini AI 分析範例
+├── email_service.py         # 📧 郵件服務模組
+├── run_analysis.sh          # 📱 執行腳本（SSH 觸發用）
+├── main.py                  # 主程式
+├── pyproject.toml           # 專案配置
+└── README.md                # 本檔案
 ```
 
 ## 快速開始
