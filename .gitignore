@@ -1,0 +1,22 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Environment variables (contains API keys - NEVER commit!)
+.env
+
+# macOS files
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
