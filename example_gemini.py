@@ -8,6 +8,7 @@ import yfinance as yf
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
 from google import genai
+from email_service import EmailService
 
 # 載入環境變數
 load_dotenv()
@@ -21,6 +22,9 @@ if not gemini_key:
 
 # 初始化 Gemini Client（使用新的 google-genai 套件）
 client = genai.Client(api_key=gemini_key)
+
+# 初始化郵件服務
+email_service = EmailService()
 
 def get_stock_data(ticker_symbol):
     """取得股票基本資料"""
@@ -106,12 +110,16 @@ def analyze_with_gemini(ticker_symbol):
         )
 
         # 顯示 AI 分析結果
-        print(response.text)
+        analysis_text = response.text
+        print(analysis_text)
+
+        # 發送郵件報告（如果已啟用）
+        email_service.send_analysis_report(ticker_symbol, data, analysis_text)
 
     except Exception as e:
         print(f"❌ Gemini API 錯誤: {e}")
         print("   請檢查 API Key 是否正確設定")
-    
+
     print(f"\n{'='*60}\n")
 
 def compare_stocks_with_gemini(tickers):
@@ -166,11 +174,15 @@ def compare_stocks_with_gemini(tickers):
             model='gemini-2.0-flash-exp',
             contents=prompt
         )
-        print(response.text)
+        analysis_text = response.text
+        print(analysis_text)
+
+        # 發送郵件報告（如果已啟用）
+        email_service.send_comparison_report(tickers, stocks_data, analysis_text)
 
     except Exception as e:
         print(f"❌ Gemini API 錯誤: {e}")
-    
+
     print(f"\n{'='*60}\n")
 
 if __name__ == "__main__":
