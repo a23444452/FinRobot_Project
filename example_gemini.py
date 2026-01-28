@@ -187,14 +187,22 @@ def compare_stocks_with_gemini(tickers):
 
     print(f"\n{'='*60}\n")
 
-if __name__ == "__main__":
+def main():
+    """主程式 - 範例用途"""
     # 範例 1: 單一股票分析
     analyze_with_gemini("AAPL")  # Apple
-    
+
     # 範例 2: 多股票比較
     compare_stocks_with_gemini(["AAPL", "MSFT", "GOOGL", "NVDA", "TSLA"])
-    
+
     print("\n💡 提示:")
     print("  - Gemini 2.0 Flash 成本約為 GPT-4 的 1/200")
     print("  - 免費額度: 每分鐘 15 次請求, 每天 1500 次")
     print("  - 適合頻繁的金融分析任務")
+
+if __name__ == "__main__":
+    # 檢查是否透過 python -c 執行(從 run_analysis.sh 呼叫)
+    import sys
+    # 如果沒有透過 -c 執行,才運行範例程式
+    if '-c' not in sys.argv[0]:
+        main()
