@@ -79,23 +79,30 @@ EMAIL_RECEIVER=recipient@example.com
 
 ### 5. 手機觸發設定（選用）
 
-想用 iPhone 一鍵執行分析？
-
+**方案 A: Telegram Bot（推薦）⭐**
 ```bash
-# 查看完整手機觸發方案（4 種方案）
-cat MOBILE_TRIGGER_GUIDE.md
+# 1. 在 Telegram 搜尋 @BotFather 建立 Bot
+# 2. 設定 .env
+TELEGRAM_BOT_TOKEN=your_token
+TELEGRAM_ALLOWED_USERS=your_user_id
 
-# iOS 捷徑詳細教學
-cat IOS_SHORTCUT_GUIDE.md
+# 3. 啟動 Bot
+./start_telegram_bot.sh
 
-# 快速參考（執行腳本方式）
-cat QUICK_REFERENCE.md
+# 4. 在 Telegram 中使用
+/analyze AAPL
+/compare AAPL MSFT GOOGL
 ```
 
-**最簡單的方式**：iOS 捷徑 + SSH
+**方案 B: iOS 捷徑**
 1. Mac 啟用「遠端登入」
 2. iPhone 建立捷徑，SSH 指令: `~/finrobot-project/run_analysis.sh AAPL analyze`
 3. 點擊執行，30 秒完成！
+
+**查看所有方案**：
+- `TELEGRAM_BOT_SETUP.md` - Telegram Bot 完整指南（推薦）
+- `IOS_SHORTCUT_GUIDE.md` - iOS 捷徑教學
+- `MOBILE_TRIGGER_GUIDE.md` - 4 種手機觸發方案比較
 
 ## ✨ 功能特色
 

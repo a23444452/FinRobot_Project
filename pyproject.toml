@@ -9,5 +9,6 @@ dependencies = [
     "google-genai>=1.60.0",
     "openai>=2.15.0",
     "python-dotenv>=1.2.1",
+    "python-telegram-bot>=22.6",
     "yfinance>=1.1.0",
 ]

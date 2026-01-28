@@ -153,10 +153,12 @@ cd ~/finrobot-project
 | `QUICK_START.md` | 快速開始（本文件）|
 | `API_SETUP_GUIDE.md` | API 詳細設定 |
 | `EMAIL_SETUP_GUIDE.md` | 郵件通知設定 |
+| `TELEGRAM_BOT_SETUP.md` | Telegram Bot 設定（推薦）⭐ |
 | `MOBILE_TRIGGER_GUIDE.md` | 手機觸發方案（4 種）|
 | `IOS_SHORTCUT_GUIDE.md` | iOS 捷徑教學 |
 | `QUICK_REFERENCE.md` | 快速參考 |
 | `GEMINI_INTEGRATION.md` | Gemini 整合說明 |
+| `DOCUMENTATION_INDEX.md` | 文件導覽索引 |
 
 ## 🔗 外部資源
 
