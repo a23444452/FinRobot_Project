@@ -104,8 +104,9 @@ def analyze_with_gemini(ticker_symbol):
     
     try:
         # 呼叫 Gemini API（使用新的 google-genai 套件）
+        # 使用穩定版本 gemini-2.0-flash（移除 -exp 後綴）
         response = client.models.generate_content(
-            model='gemini-2.0-flash-exp',
+            model='gemini-2.0-flash',
             contents=prompt
         )
 
@@ -170,8 +171,9 @@ def compare_stocks_with_gemini(tickers):
     print("-" * 60)
     
     try:
+        # 使用穩定版本 gemini-2.0-flash
         response = client.models.generate_content(
-            model='gemini-2.0-flash-exp',
+            model='gemini-2.0-flash',
             contents=prompt
         )
         analysis_text = response.text

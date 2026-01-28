@@ -165,7 +165,7 @@ config = {
 }
 
 response = client.models.generate_content(
-    model='gemini-2.0-flash-exp',
+    model='gemini-2.0-flash',
     contents=prompt,
     config=config
 )
@@ -176,7 +176,7 @@ response = client.models.generate_content(
 ```python
 try:
     response = client.models.generate_content(
-        model='gemini-2.0-flash-exp',
+        model='gemini-2.0-flash',
         contents=prompt
     )
     print(response.text)
