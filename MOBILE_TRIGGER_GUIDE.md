@@ -31,27 +31,32 @@
 2. 勾選「遠端登入」
 3. 記下你的使用者名稱和 Mac 的 IP 位址
 
-### 步驟 2: 建立執行腳本
+### 步驟 2: 使用執行腳本
 
-在你的專案目錄建立 `run_analysis.sh`：
+專案已包含 `run_analysis.sh` 腳本，支援自訂股票代號：
 
 ```bash
-#!/bin/bash
-cd ~/finrobot-project
+# 腳本已存在於專案中
+~/finrobot-project/run_analysis.sh
 
-# 記錄執行時間
-echo "$(date): 開始分析" >> ~/finrobot-logs.txt
-
-# 執行股票分析
-uv run python example_gemini.py
-
-# 記錄完成時間
-echo "$(date): 分析完成" >> ~/finrobot-logs.txt
+# 使用方式：
+~/finrobot-project/run_analysis.sh TICKER ACTION
+# TICKER: 股票代號（例如：AAPL）
+# ACTION: analyze（分析）或 compare（比較）
 ```
 
-設定執行權限：
+測試執行：
 ```bash
-chmod +x ~/finrobot-project/run_analysis.sh
+# 分析單一股票
+~/finrobot-project/run_analysis.sh AAPL analyze
+
+# 比較多支股票（用逗號分隔）
+~/finrobot-project/run_analysis.sh AAPL,MSFT,GOOGL compare
+```
+
+查看日誌：
+```bash
+tail ~/finrobot-logs.txt
 ```
 
 ### 步驟 3: 建立 iOS 捷徑
@@ -63,8 +68,12 @@ chmod +x ~/finrobot-project/run_analysis.sh
    - **主機**: 你的 Mac IP（例如 192.168.1.100）
    - **使用者**: 你的 Mac 使用者名稱
    - **密碼**: 你的 Mac 登入密碼
-   - **指令**: `~/finrobot-project/run_analysis.sh`
+   - **指令**: `~/finrobot-project/run_analysis.sh AAPL analyze`
 5. 命名為「📊 股票分析」
+
+**進階**: 使用變數讓使用者輸入股票代號
+- 加入「詢問輸入」動作
+- 指令改為: `~/finrobot-project/run_analysis.sh [變數:股票代號] analyze`
 
 ### 步驟 4: 加入到主畫面
 
@@ -74,21 +83,7 @@ chmod +x ~/finrobot-project/run_analysis.sh
 
 現在你可以一鍵執行分析！📱
 
-### 進階：傳入股票代號
-
-修改腳本支援參數：
-
-```bash
-#!/bin/bash
-cd ~/finrobot-project
-
-TICKER=${1:-AAPL}  # 預設 AAPL
-echo "$(date): 分析 $TICKER" >> ~/finrobot-logs.txt
-
-uv run python -c "from example_gemini import analyze_with_gemini; analyze_with_gemini('$TICKER')"
-```
-
-捷徑中加入「詢問輸入」→ 將結果傳給 SSH 指令。
+**詳細的 iOS 捷徑設定請參考**: `IOS_SHORTCUT_GUIDE.md`
 
 ---
 

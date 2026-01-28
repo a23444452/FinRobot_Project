@@ -77,6 +77,26 @@ EMAIL_PASSWORD=your_app_password
 EMAIL_RECEIVER=recipient@example.com
 ```
 
+### 5. 手機觸發設定（選用）
+
+想用 iPhone 一鍵執行分析？
+
+```bash
+# 查看完整手機觸發方案（4 種方案）
+cat MOBILE_TRIGGER_GUIDE.md
+
+# iOS 捷徑詳細教學
+cat IOS_SHORTCUT_GUIDE.md
+
+# 快速參考（執行腳本方式）
+cat QUICK_REFERENCE.md
+```
+
+**最簡單的方式**：iOS 捷徑 + SSH
+1. Mac 啟用「遠端登入」
+2. iPhone 建立捷徑，SSH 指令: `~/finrobot-project/run_analysis.sh AAPL analyze`
+3. 點擊執行，30 秒完成！
+
 ## ✨ 功能特色
 
 - 📊 **即時股票數據**：使用 YFinance 免費取得市場數據
@@ -85,6 +105,7 @@ EMAIL_RECEIVER=recipient@example.com
 - 📈 **深度分析**：單一股票完整評估（財務、風險、建議）
 - 🔍 **比較分析**：多股票並排比較與投資組合建議
 - 📧 **郵件通知**：自動發送精美 HTML 報告到信箱
+- 📱 **手機觸發**：iOS 捷徑、Telegram Bot、API 等多種方式
 - 🇹🇼 **繁體中文**：完整中文介面與分析報告
 
 ## 常用命令

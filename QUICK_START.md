@@ -74,6 +74,8 @@ uv run python test_api.py
 
 ## 💡 範例腳本
 
+### 終端機執行
+
 ```bash
 # 基本股票分析（免費，無需 API）
 uv run python example_basic.py
@@ -83,7 +85,21 @@ uv run python example_gemini.py
 
 # API 測試
 uv run python test_api.py
+
+# 使用執行腳本（支援自訂股票代號）
+cd ~/finrobot-project
+./run_analysis.sh AAPL analyze          # 分析 Apple
+./run_analysis.sh AAPL,MSFT compare     # 比較兩支股票
 ```
+
+### 📱 手機執行
+
+**iOS 捷徑**（最簡單）：
+1. 查看 `IOS_SHORTCUT_GUIDE.md` 詳細教學
+2. 快速參考 `QUICK_REFERENCE.md`
+
+**其他方案**：
+- 查看 `MOBILE_TRIGGER_GUIDE.md` 了解 Telegram Bot、API 等方案
 
 ---
 
@@ -129,9 +145,20 @@ uv run python test_api.py
 
 ---
 
-## 📚 學習資源
+## 📚 完整文件
 
-- **專案位置**: `~/finrobot-project/`
-- **API 指南**: `API_SETUP_GUIDE.md`
+| 文件 | 說明 |
+|------|------|
+| `README.md` | 專案總覽 |
+| `QUICK_START.md` | 快速開始（本文件）|
+| `API_SETUP_GUIDE.md` | API 詳細設定 |
+| `EMAIL_SETUP_GUIDE.md` | 郵件通知設定 |
+| `MOBILE_TRIGGER_GUIDE.md` | 手機觸發方案（4 種）|
+| `IOS_SHORTCUT_GUIDE.md` | iOS 捷徑教學 |
+| `QUICK_REFERENCE.md` | 快速參考 |
+| `GEMINI_INTEGRATION.md` | Gemini 整合說明 |
+
+## 🔗 外部資源
+
 - **官方文件**: https://finrobot.ai
 - **GitHub**: https://github.com/AI4Finance-Foundation/FinRobot
